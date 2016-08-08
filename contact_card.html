@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contact Card</title>
+	<link rel="stylesheet" type="text/css" href="contact_card.css">
+	<script type="text/javascript" src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+	<script>
+	
+		$(document).ready(function(){
+			var description	
+			$('#info').submit(function(){
+				var first= $('#first').val();
+				var last= $('#last').val();
+				description = $('#description').val();
+
+				$('#result').append('<div class="listing"><p class="firstname">'+first+' '+last+'</p><h3>Click for Description</h3><h4 hidden>'+description+'</h4></div>')
+				$('.clear').val('');
+				return false;
+			})
+
+			$(document).on('click', '.listing', function(){
+				$(this).children().hide();
+				$(this).children('h4').show();
+				}) 
+			})
+</script>
+</head>
+<body>
+	<div id="form1">
+	<h2> Enter your Information!</h2>
+		<form action="process.php" method="post" id='info'>
+		<label>
+			First Name:<input type="text" name="first" id='first' class="clear">
+		</label>
+		<label>
+			Last Name:<input type="text" name="last" id='last' class="clear" >
+		</label>
+		<label>
+			Description:<input type="text" name="descr" id="description" class="clear">
+		</label>	
+		<input type="submit" name="submit_butt" id="button">
+	</form>
+</div>
+<div id="result">
+</div>
+</body>
+</html>
